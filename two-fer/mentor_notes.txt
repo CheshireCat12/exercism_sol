@@ -22,7 +22,8 @@ Hello, very good solution :)
 You used a default argument for the function parameter and you used f-strings to format your string. That's perfect ;)
 
 
-
+benchmark
+https://stackoverflow.com/a/43213810
 
 I approve your solution, I let you free to do the little modifications that I propose :)
 

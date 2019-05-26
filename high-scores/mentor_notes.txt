@@ -1,0 +1,11 @@
+Hello, good solution.
+
+Just 2 little things:
+
+- In python if you want to access to the last element of a list you can do it directly like that : `scores[-1]`.
+- you can use the `max()` function to directly return the personal best value.
+
+Hello, good solution :)
+
+Indeed there is a cleaner way to solve the personal_top_three() function. You can sort the scores and take the highest values ;)
+(Another small thing, I thing it's better to use `scores[-1]` to access to the last element in the `latest()` function. Like that you don't remove this value of your list)
