@@ -1,0 +1,28 @@
+"""
+Created on Sun May 26 10:01:09 2019
+
+@author: cheshirecat12
+"""
+
+==========================
+Hello, good solution. :)
+
+Just 2 little things:
+
+- You are using a default value for the variable name, that's a good idea. Why not directly give "you" as default value. Like that you don't need to use a conditional statement ;)
+
+- I don't know if you know but you can give a default value to the argument of a function. And if you give "you" as a default value you don't need after that to use `*names` or a conditional statement.
+
+- In Python3, You can use the f-string to format a string more easily ([f-string examples](https://www.python.org/dev/peps/pep-0498/))
+
+
+============================
+Hello, very good solution :)
+
+You used a default argument for the function parameter and you used f-strings to format your string. That's perfect ;)
+
+
+
+
+I approve your solution, I let you free to do the little modifications that I propose :)
+
