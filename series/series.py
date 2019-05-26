@@ -5,7 +5,7 @@ Created on Sun May 25 2019
 
 @author: cheshirecat12
 
-Exercism exercise: Manage a game player's High Score list.
+Exercism exercise: Slice a string of digits
 """
 from typing import List
 
