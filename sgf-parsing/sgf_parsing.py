@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Created on Sat May 25 2019
+Created on Sun May 25 2019
 
 @author: cheshirecat12
 
@@ -62,6 +62,9 @@ def parse(input_: str) -> SgfTree:
 
     Raises:
         ValueError: if the given input is not correctly formated.
+
+    TODOs:
+        the escape property test
     """
     empty_patt = r'\(;.*\)'
     node_patt = r'(;|\])([A-Z])\['
