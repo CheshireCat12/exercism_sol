@@ -8,6 +8,7 @@ Created on Sun May 26 2019
 Exercism exercise: Translate RNA sequences into proteins.
 """
 from re import findall
+from itertools import takewhile
 
 CONDONS_PROTEINS = [
     ("AUG", "Methionine"),
@@ -24,14 +25,14 @@ CONDONS_TO_PROTEINS = {condon: protein
                        for condon in condons.split(",")}
 
 
+def stop_condition(condon):
+    return CONDONS_TO_PROTEINS[condon] != "STOP"
+
+
 def proteins(strand: str) -> str:
     """Convert the strand rna to proteins."""
-    proteins = []
+    result = [CONDONS_TO_PROTEINS[condon]
+              for condon in takewhile(stop_condition,
+                                      findall(r'\w{3}', strand))]
 
-    for condon in findall(r'\w{3}', strand):
-        protein = CONDONS_TO_PROTEINS[condon]
-        if protein == "STOP":
-            return proteins
-
-        proteins.append(protein)
-    return proteins
+    return result
