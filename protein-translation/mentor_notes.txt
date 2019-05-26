@@ -1,0 +1,13 @@
+Hello, good solution :)
+
+Just 2-3 things that can improve your code:
+
+- You should put the protein dict outside of the function. Like that it won't re-create the dict each time you call the `proteins()` function.
+- To iterate over each codon
+
+Hello, good solution :)
+
+Just 2-3 things that can improve your code:
+
+- You should put the protein dict outside of the function. Like that it won't re-create the dict each time you call the `proteins()` function.
+- To iterate over each codon you can use `re.findall(r'\w{3}', strand)`. Like that you don't need to slice over the strand ;)

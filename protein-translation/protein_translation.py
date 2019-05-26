@@ -10,7 +10,7 @@ Exercism exercise: Translate RNA sequences into proteins.
 from re import findall
 from itertools import takewhile
 
-CONDONS_PROTEINS = [
+CODONS_PROTEINS = [
     ("AUG", "Methionine"),
     ("UUU,UUC", "Phenylalanine"),
     ("UUA,UUG", "Leucine"),
@@ -20,19 +20,19 @@ CONDONS_PROTEINS = [
     ("UGG", "Tryptophan"),
     ("UAA,UAG,UGA", "STOP")
 ]
-CONDONS_TO_PROTEINS = {condon: protein
-                       for condons, protein in CONDONS_PROTEINS
-                       for condon in condons.split(",")}
+CODONS_TO_PROTEINS = {codon: protein
+                      for codons, protein in CODONS_PROTEINS
+                      for codon in codons.split(",")}
 
 
-def stop_condition(condon):
-    return CONDONS_TO_PROTEINS[condon] != "STOP"
+def _stop_condition(codon):
+    return CODONS_TO_PROTEINS[codon] != "STOP"
 
 
 def proteins(strand: str) -> str:
     """Convert the strand rna to proteins."""
-    result = [CONDONS_TO_PROTEINS[condon]
-              for condon in takewhile(stop_condition,
-                                      findall(r'\w{3}', strand))]
+    result = [CODONS_TO_PROTEINS[codon]
+              for codon in takewhile(_stop_condition,
+                                     findall(r'\w{3}', strand))]
 
     return result
