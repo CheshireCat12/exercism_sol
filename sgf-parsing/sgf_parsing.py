@@ -52,15 +52,25 @@ def _format_properties(properties):
     return props
 
 
-def parse(input_string: str) -> SgfTree:
+def parse(input_: str) -> SgfTree:
+    """Parse the board game given in parameters.
+    Args:
+        input_(str): board game to parse in SGF.
+
+    Returns:
+        SgfTree: the formated board game
+
+    Raises:
+        ValueError: if the given input is not correctly formated.
+    """
     empty_patt = r'\(;.*\)'
     node_patt = r'(;|\])([A-Z])\['
     properties_patt = r'(?=([A-Z]|\])\[([a-zA-Z])\])'
 
-    default_patt = re.search(empty_patt, input_string)
+    default_patt = re.search(empty_patt, input_)
 
-    nodes = re.findall(node_patt, input_string)
-    properties = re.findall(properties_patt, input_string)
+    nodes = re.findall(node_patt, input_)
+    properties = re.findall(properties_patt, input_)
 
     if not default_patt or (default_patt.group(0) != '(;)' and not nodes):
         raise ValueError("Input invalid")
