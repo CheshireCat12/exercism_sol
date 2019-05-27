@@ -11,24 +11,24 @@ from typing import List, Callable
 
 
 def _yacht(dice: List[int]) -> int:
-    return [0, 50][len(set(dice)) == 1]
+    return 50 if len(set(dice)) == 1 else 0
 
 
 def _main_category(num: int) -> Callable[[List[int]], int]:
     def wrapper(dice: List[int]) -> int:
-        return num * len([val for val in dice if val == num])
+        return num * dice.count(num)
 
     return wrapper
 
 
 def _full_house(dice: List[int]) -> int:
-    return [0, sum(dice)][any(dice.count(val) == 3 for val in set(dice))]
+    return sum(dice) if any(dice.count(val) == 3 for val in set(dice)) else 0
 
 
 def _four_of_a_kind(dice: List[int]) -> int:
     four_time = [val for val in set(dice) if dice.count(val) >= 4]
 
-    return [0, 4*sum(four_time)][bool(four_time)]
+    return 4*sum(four_time) if four_time else 0
 
 
 _STRAIGHTS = {"small": set(range(1, 6)),
@@ -37,7 +37,7 @@ _STRAIGHTS = {"small": set(range(1, 6)),
 
 def _straight(straight_type: str) -> Callable[[List[int]], int]:
     def wrapper(dice: List[int]) -> int:
-        return [0, 30][set(dice) == _STRAIGHTS[straight_type]]
+        return 30 if set(dice) == _STRAIGHTS[straight_type] else 0
 
     return wrapper
 
