@@ -12,11 +12,15 @@ from re import sub, search
 
 def verify(isbn: str) -> bool:
     """Check if the given isbn code is valid."""
-    is_valid_pattern = bool(search(r'^\d-?\d{3}-?\d{5}-?(\d|X)$', isbn))
-
     final_x = [10] if isbn[-1:] == 'X' else []
     format_isbn = [int(val) for val in sub(r'[A-Z-]', '', isbn)] + final_x
 
-    is_valid_isbn = sum(i*val for i, val in enumerate(format_isbn[::-1], 1)) % 11 == 0
+    valid_isbn = sum(i*val
+                     for i, val in enumerate(format_isbn[::-1], 1)) % 11 == 0
 
-    return is_valid_isbn and is_valid_pattern
+    # Not to do the test at the return or if I should write a test
+    # at the beginning of the function to return directly if the pattern
+    # doesn't match.
+    valid_pattern = bool(search(r'^\d-?\d{3}-?\d{5}-?(\d|X)$', isbn))
+
+    return valid_isbn and valid_pattern
